@@ -1,10 +1,10 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm';
-@Entity('categories')
-export class Product extends BaseEntity {
+@Entity('user')
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
-  categoryName: string;
+  username: string;
   @Column()
-  description: string;
+  password: string;
 }

@@ -1,12 +1,20 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { DatabaseModule } from 'src/database/database.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
-import { DatabaseModule } from 'database/database.module';
-import { ProductsModule } from './products/products.module';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [UsersModule, DatabaseModule, ProductsModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    DatabaseModule,
+    AuthModule,
+    UserModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
